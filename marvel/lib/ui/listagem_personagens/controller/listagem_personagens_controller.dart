@@ -8,7 +8,7 @@ class ListagemPersonagensController extends GetxController {
 
   bool gettingListaPersonagens = true;
   List<IndexListaPersonagem> listaPersonagens = <IndexListaPersonagem>[
-    IndexListaPersonagem(id: '01', caracterName: 'javali', caracterUrlPhoto: '',),
+    IndexListaPersonagem(id: '01', caracterName: 'javali', caracterUrlPhoto: 'http://i.annihil.us/u/prod/marvel/i/mg/c/e0/535fecbbb9784.jpg',),
     IndexListaPersonagem(id: '02', caracterName: 'javali 2', caracterUrlPhoto: '',),
     IndexListaPersonagem(id: '03', caracterName: 'javali 3', caracterUrlPhoto: '',),
   ];

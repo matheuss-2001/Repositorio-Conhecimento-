@@ -81,7 +81,11 @@ class ListagemPersonagensPage extends GetView<ListagemPersonagensController> {
                 id: itemPersonagemIndex.id,
                 personagemName: itemPersonagemIndex.caracterName,
                 personagemUrl: itemPersonagemIndex.caracterUrlPhoto,
-                onDelete: () {});
+                onDelete: () {},
+                onTapCard: (){
+
+                },
+            );
           },
         ),
       );
