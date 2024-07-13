@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CardIndexListaPersonagem extends StatelessWidget {
-  final String id;
+  final ValueKey<String> id;
   final String personagemName;
   final String personagemUrl;
   final Function()? onDelete;
@@ -34,7 +34,7 @@ class CardIndexListaPersonagem extends StatelessWidget {
         ],
       ),
       child: Dismissible(
-          key: ValueKey<String>(id),
+          key: id,
           direction: DismissDirection.endToStart,
           background: Container(
             clipBehavior: Clip.antiAlias,
@@ -53,72 +53,86 @@ class CardIndexListaPersonagem extends StatelessWidget {
               ],
             ),
           ),
-          //confirmDismiss: onDelete,
-          child: Container(
-            color: Colors.purple,
+          child: IntrinsicHeight(
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  constraints:
-                      const BoxConstraints(maxWidth: 200, maxHeight: 180),
+                  constraints: const BoxConstraints(maxWidth: 200),
                   child: CachedNetworkImage(
-                      fit: BoxFit.contain,
-                      imageUrl: personagemUrl,
-                      progressIndicatorBuilder: (context, url, progress) =>
-                          Container(
-                            color: Colors.grey,
-                            child: const Center(
-                                child: CircularProgressIndicator.adaptive(
-                              valueColor: const AlwaysStoppedAnimation<Color>(
-                                  Colors.white),
-                            )),
-                          ),
-                      errorWidget: (context, url, error) => Container(
-                            // constraints: const BoxConstraints(maxWidth: 200),
-                            color: Colors.grey,
-                            child: const Center(
-                              child: Icon(
-                                Icons.photo,
-                                color: Colors.white,
-                                size: 50,
-                              ),
-                            ),
-                          )),
+                    fit: BoxFit.contain,
+                    imageUrl: personagemUrl,
+                    progressIndicatorBuilder: (context, url, progress) =>
+                        Container(
+                      height: 200,
+                      color: Colors.grey,
+                      child: const Center(
+                          child: CircularProgressIndicator.adaptive(
+                        valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                      )),
+                    ),
+                    errorWidget: (context, url, error) => Container(
+                      height: 200,
+                      color: Colors.grey,
+                      child: const Center(
+                        child: Icon(
+                          Icons.photo,
+                          color: Colors.white,
+                          size: 50,
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
-                Container(
-                  height: 150,
-                  color: Colors.pink,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(personagemName),
-                      ElevatedButton(
-                          iconAlignment: IconAlignment.end,
-                          onPressed: onTapCard,
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.red.shade600,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(14)),
+                Expanded(
+                  child: Container(
+                    color: Colors.red.shade100,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(4),
+                          child: Text(
+                            personagemName,
+                            maxLines: 5,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontWeight: FontWeight.w800,
+                                fontSize: 16,
+                                color: Colors.red.shade900),
                           ),
-                          child: const Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
+                        ),
+                        Container(
+                          constraints: const BoxConstraints(maxWidth: 150),
+                          child: ElevatedButton(
+                            onPressed: onTapCard,
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.red.shade800,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(14)),
+                            ),
+                            child: const Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Detalhes",
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold),
-                                  "Detalhes"),
-                              Icon(
-                                Icons.arrow_forward_ios_rounded,
-                                color: Colors.white,
-                                size: 16,
-                              )
-                            ],
-                          ))
-                    ],
+                                ),
+                                Icon(
+                                  Icons.arrow_forward_ios_rounded,
+                                  color: Colors.white,
+                                  size: 16,
+                                )
+                              ],
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
-                )
+                ),
               ],
             ),
           )),

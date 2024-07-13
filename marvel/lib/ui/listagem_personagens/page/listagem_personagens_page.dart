@@ -28,72 +28,38 @@ class ListagemPersonagensPage extends GetView<ListagemPersonagensController> {
       builder: (controller) {
         if (!controller.gettingListaPersonagens) {
           return Container();
-          /*
-            ListView.separated(
-            itemCount: 15,
-            physics: const NeverScrollableScrollPhysics(),
-            itemBuilder: (context, index) {
-              return Column(
-                children: [
-                  if (index == 0)
-                    const SizedBox(
-                      height: 20,
-                    ),
-                  Container(
-                    margin: responsiveMargin(size),
-                    child: Shimmer.fromColors(
-                      period: const Duration(milliseconds: 1200),
-                      baseColor: Colors.grey.withOpacity(0.5),
-                      highlightColor: Colors.black.withOpacity(0.5),
-                      child: const ShimmerChooseItem(
-                          typeOfLoagings: TypeOfLoading.myPolicesShimmer),
-                    ),
-                  ),
-                ],
-              );
-            },
-            separatorBuilder: (context, index) {
-              return const SizedBox(height: 20);
-            },
-          );
-
-           */
         }
-        return _listaPersonagem();
+        return _personagemWidget();
       },
     );
   }
 
-  Widget _listaPersonagem() {
+  Widget _personagemWidget() {
     if (controller.listaPersonagens.isNotEmpty) {
       return RefreshIndicator(
         onRefresh: () async {}, //=> controller.getNotifications(false),
         child: AnimatedList(
-          //key: controller.keyOfListActiveSolicitation,
-          //controller: controller.scrollNotifications,
           scrollDirection: Axis.vertical,
-          physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+          physics: const BouncingScrollPhysics(
+              parent: AlwaysScrollableScrollPhysics()),
           padding: const EdgeInsets.all(16),
           initialItemCount: controller.listaPersonagens.length,
           itemBuilder: (BuildContext context, int index, Animation animation) {
-            IndexListaPersonagem itemPersonagemIndex = controller.listaPersonagens[index];
+            IndexListaPersonagem itemPersonagemIndex =
+                controller.listaPersonagens[index];
             return CardIndexListaPersonagem(
-                id: itemPersonagemIndex.id,
-                personagemName: itemPersonagemIndex.caracterName,
-                personagemUrl: itemPersonagemIndex.caracterUrlPhoto,
-                onDelete: () {},
-                onTapCard: (){
-
-                },
+              id: ValueKey<String>(itemPersonagemIndex.id),
+              personagemName: itemPersonagemIndex.caracterName,
+              personagemUrl: itemPersonagemIndex.caracterUrlPhoto,
+              onDelete: () {},
+              onTapCard: () {},
             );
           },
         ),
       );
     }
-
     return const Center(
-      child: Text('Não há notificação',
-          textAlign: TextAlign.left,
+      child: Text('Não há personagens',
           style: TextStyle(fontSize: 16, color: Colors.grey)),
     );
   }
