@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marvel/app/widgets/card_index_lista_personagem.dart';
 import 'package:marvel/ui/listagem_personagens/controller/listagem_personagens_controller.dart';
-import 'package:marvel/ui/listagem_personagens/data/model/index_lista_personagem.dart';
+import 'package:marvel/ui/listagem_personagens/data/model/personagem_marvel_viewmodel.dart';
 
 class ListagemPersonagensPage extends GetView<ListagemPersonagensController> {
   const ListagemPersonagensPage({Key? key}) : super(key: key);
@@ -25,32 +25,35 @@ class ListagemPersonagensPage extends GetView<ListagemPersonagensController> {
 
   GetBuilder _buildBody(BuildContext context, Size size) {
     return GetBuilder<ListagemPersonagensController>(
+      id: "listaPersonagemBuilder",
       builder: (controller) {
-        if (!controller.gettingListaPersonagens) {
+        if (controller.gettingListaPersonagens) {
           return Container();
         }
-        return _personagemWidget();
+        return _listaPersonagemMarvel();
       },
     );
   }
 
-  Widget _personagemWidget() {
-    if (controller.listaPersonagens.isNotEmpty) {
+  Widget _listaPersonagemMarvel() {
+    if (controller.marvelViewmodel.listaPersonagensViewmodel.isNotEmpty) {
       return RefreshIndicator(
-        onRefresh: () async {}, //=> controller.getNotifications(false),
+        onRefresh: () => controller.updateListagemPersonagem(),
         child: AnimatedList(
           scrollDirection: Axis.vertical,
           physics: const BouncingScrollPhysics(
               parent: AlwaysScrollableScrollPhysics()),
           padding: const EdgeInsets.all(16),
-          initialItemCount: controller.listaPersonagens.length,
+          initialItemCount:
+              controller.marvelViewmodel.listaPersonagensViewmodel.length,
           itemBuilder: (BuildContext context, int index, Animation animation) {
-            IndexListaPersonagem itemPersonagemIndex =
-                controller.listaPersonagens[index];
+            PersonagemMarvelViewmodel itemPersonagemIndex =
+                controller.marvelViewmodel.listaPersonagensViewmodel[index];
             return CardIndexListaPersonagem(
-              id: ValueKey<String>(itemPersonagemIndex.id),
-              personagemName: itemPersonagemIndex.caracterName,
-              personagemUrl: itemPersonagemIndex.caracterUrlPhoto,
+              id: ValueKey<int>(itemPersonagemIndex.id),
+              personagemName: itemPersonagemIndex.name,
+              personagemUrl: itemPersonagemIndex
+                  .imagemPersonagemViewmodel.imagemComExtensao,
               onDelete: () {},
               onTapCard: () {},
             );

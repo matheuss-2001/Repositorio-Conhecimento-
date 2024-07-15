@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CardIndexListaPersonagem extends StatelessWidget {
-  final ValueKey<String> id;
+  final ValueKey<int> id;
   final String personagemName;
   final String personagemUrl;
   final Function()? onDelete;
