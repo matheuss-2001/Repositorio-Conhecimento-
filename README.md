@@ -4,5 +4,6 @@
 - Service Endpoints Listagem Personagens (DONE)
 - Tela detalhe personagem (DOIG)
 - Service detalhe personagem (TO DO)
+- Filter mostrar somente o nome digitado do personagem (TO DO)
 - Shimmer loading Detalhe Personagem (TO DO)
 - ShimMer busca listagem Personagem (TO DO)
