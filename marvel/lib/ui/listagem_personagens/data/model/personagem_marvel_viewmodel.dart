@@ -11,7 +11,7 @@ class PersonagemMarvelViewmodel {
   ImagemPersonagemViewmodel imagemPersonagemViewmodel;
   List<MarvelComicViewmodel> comics;
   List<MarvelSeriesViewmodel> series;
-  List<MarvelEventViewmodel> events;
+  MarvelEventViewmodel events;
   List<MarvelUrlViewmodel> urls;
 
   PersonagemMarvelViewmodel({
@@ -26,18 +26,6 @@ class PersonagemMarvelViewmodel {
   });
 
   factory PersonagemMarvelViewmodel.fromJson(Map<String, dynamic> json) {
-    //var comicsList = json['comics']['items'] as List;
-    //List<MarvelComic> comics = comicsList.map((comic) => MarvelComic.fromJson(comic)).toList();
-
-    //var seriesList = json['series']['items'] as List;
-    //List<MarvelSeries> series = seriesList.map((serie) => MarvelSeries.fromJson(serie)).toList();
-
-    //var eventsList = json['events']['items'] as List;
-    //List<MarvelEvent> events = eventsList.map((event) => MarvelEvent.fromJson(event)).toList();
-
-    //var urlsList = json['urls'] as List;
-    //List<MarvelUrl> urls = urlsList.map((url) => MarvelUrl.fromJson(url)).toList();
-
     return PersonagemMarvelViewmodel(
       id: json['id'] ?? 0,
       name: json['name'] ?? "",
@@ -54,11 +42,14 @@ class PersonagemMarvelViewmodel {
               .map((e) => MarvelSeriesViewmodel.fromJson(e))
               .toList()
           : [],
-      events: json['events']['items'] != null
-          ? List.from(json['events']['items'])
-              .map((e) => MarvelEventViewmodel.fromJson(e))
-              .toList()
-          : [],
+      events: json['events'] != null
+          ? MarvelEventViewmodel.fromJson(json['events'])
+          : MarvelEventViewmodel(
+              available: 0,
+              collectionURI: '',
+              listaEventMarvelViewmodel: [],
+              returned: 0,
+            ),
       urls: json['urls'] != null
           ? List.from(json['urls'])
               .map((e) => MarvelUrlViewmodel.fromJson(e))

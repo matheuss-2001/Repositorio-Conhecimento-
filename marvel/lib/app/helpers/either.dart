@@ -10,17 +10,6 @@ class GenericFailure extends Failure {
       : super(title ?? 'Atenção', message ?? 'Erro desconhecido');
 }
 
-class InternetConnectionError extends Failure {
-  InternetConnectionError()
-      : super('Atenção', 'Sem conexão, verifique sua internet.');
-}
-
-class ServidorConnectionError extends Failure {
-  ServidorConnectionError()
-      : super(
-            'Atenção', 'Conexão fraca, por favor tente novamente mais tarde.');
-}
-
 class TimeOutError extends Failure {
   TimeOutError([String? statusCode])
       : super('Atenção',

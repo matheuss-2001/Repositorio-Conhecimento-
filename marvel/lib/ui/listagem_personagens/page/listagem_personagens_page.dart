@@ -25,8 +25,9 @@ class ListagemPersonagensPage extends GetView<ListagemPersonagensController> {
 
   GetBuilder _buildBody(BuildContext context, Size size) {
     return GetBuilder<ListagemPersonagensController>(
+      id: "listaPersonagemBuilder",
       builder: (controller) {
-        if (!controller.gettingListaPersonagens) {
+        if (controller.gettingListaPersonagens) {
           return Container();
         }
         return _listaPersonagemMarvel();
@@ -37,7 +38,7 @@ class ListagemPersonagensPage extends GetView<ListagemPersonagensController> {
   Widget _listaPersonagemMarvel() {
     if (controller.marvelViewmodel.listaPersonagensViewmodel.isNotEmpty) {
       return RefreshIndicator(
-        onRefresh: () async {}, //=> controller.getNotifications(false),
+        onRefresh: () => controller.updateListagemPersonagem(),
         child: AnimatedList(
           scrollDirection: Axis.vertical,
           physics: const BouncingScrollPhysics(

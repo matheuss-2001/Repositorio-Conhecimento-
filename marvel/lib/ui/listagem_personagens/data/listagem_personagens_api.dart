@@ -11,8 +11,6 @@ class ListagemPersonagensApi extends GetConnect {
   Future<Response<dynamic>> getListagemPersonagens() async {
     final Map<String, String> params = Auth.getCredentials();
     final String url = baseUrlString("/v1/public/characters", params);
-    return await get(url,
-            headers: {'Authorization': 'Bearer ${Auth.publicKey}'})
-        .timeout(timeout);
+    return await get(url).timeout(timeout);
   }
 }

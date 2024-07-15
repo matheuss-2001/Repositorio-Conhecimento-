@@ -1,11 +1,19 @@
 import 'dart:convert';
 import 'package:crypto/crypto.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_core/src/get_main.dart';
 
 String baseUrlString(String path, [Map<String, dynamic>? queryParameters]) {
-  return Uri.https("https://gateway.marvel.com", path, queryParameters)
-      .toString();
+  final Uri uri = Uri.https("gateway.marvel.com", path, queryParameters);
+  return uri.toString();
+}
+
+abstract class MarvelSepator {
+  static const verySmall = SizedBox(height: 4, width: 4);
+  static const small = SizedBox(height: 8, width: 8);
+  static const medium = SizedBox(height: 16, width: 16);
+  static const big = SizedBox(height: 32, width: 32);
 }
 
 abstract class Auth {
