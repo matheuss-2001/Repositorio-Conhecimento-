@@ -1,13 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:get/get_navigation/src/routes/transitions_type.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'package:marvel/app/helpers/get_device_info.dart';
 import 'app/routes/app_pages.dart';
 import 'app/routes/app_routes.dart';
 
+Future<void> fetchDeviceInfo() async {
+  final box = GetStorage();
+  Map<String, dynamic> deviceInfo = await DeviceInfo.getDeviceInfo();
+  box.write('deviceInfo', deviceInfo);
+  Get.log("${box.read('deviceInfo')}");
+}
+
 void main() async {
+  await GetStorage.init();
   runApp(const MyApp());
+  await fetchDeviceInfo();
 }
 
 class MyApp extends StatelessWidget {
