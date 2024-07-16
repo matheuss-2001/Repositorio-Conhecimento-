@@ -2,7 +2,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marvel/app/helpers/global_variables.dart';
+import 'package:marvel/app/widgets/card_obra.dart';
 import 'package:marvel/ui/detalhe_personagem/controller/detalhe_personagem_controller.dart';
+import 'package:marvel/ui/detalhe_personagem/data/models/obra_viewmodel.dart';
 
 class DetalhePersonagemPage extends GetView<DetalhePersonagemController> {
   const DetalhePersonagemPage({Key? key}) : super(key: key);
@@ -19,8 +21,11 @@ class DetalhePersonagemPage extends GetView<DetalhePersonagemController> {
     return GetBuilder<DetalhePersonagemController>(
         id: "builderDetalhePersonagem",
         builder: (controller) {
-          if (!controller.gettingPersonagemDetalhe) {
-            return Container();
+          if (controller.gettingPersonagemDetalhe) {
+            return const Center(
+                child: CircularProgressIndicator(
+              color: Colors.red,
+            ));
           }
           return CustomScrollView(
               physics: const BouncingScrollPhysics(),
@@ -41,7 +46,7 @@ class DetalhePersonagemPage extends GetView<DetalhePersonagemController> {
                           .imagemPersonagemViewmodel.imagemComExtensao,
                       height: MediaQuery.sizeOf(context).height,
                       width: double.infinity,
-                      fit: BoxFit.cover,
+                      fit: BoxFit.fitWidth,
                       errorWidget: (context, url, error) => Container(
                         color: Colors.grey,
                         child: const Icon(
@@ -57,9 +62,11 @@ class DetalhePersonagemPage extends GetView<DetalhePersonagemController> {
                     delegate: SliverChildListDelegate([
                   Column(
                     children: [
+                      MarvelSepator.medium,
                       Padding(
                         padding: const EdgeInsets.only(left: 16, right: 16),
                         child: Container(
+                          width: size.width,
                           padding: const EdgeInsets.all(12),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12),
@@ -71,7 +78,7 @@ class DetalhePersonagemPage extends GetView<DetalhePersonagemController> {
                             boxShadow: [
                               BoxShadow(
                                 offset: const Offset(0, 0.0),
-                                blurRadius: 15.0,
+                                blurRadius: 8,
                                 spreadRadius: 2.0,
                                 color: Colors.black.withOpacity(0.05),
                               ),
@@ -94,6 +101,7 @@ class DetalhePersonagemPage extends GetView<DetalhePersonagemController> {
                           ),
                         ),
                       ),
+                      MarvelSepator.small,
                       SizedBox(
                         height: 50,
                         child: TabBar(
@@ -113,23 +121,23 @@ class DetalhePersonagemPage extends GetView<DetalhePersonagemController> {
                               shape: BoxShape.rectangle),
                           controller: controller.tabController,
                           tabs: const [
-                            Tab(text: "Events"),
                             Tab(text: "Comics"),
+                            Tab(text: "Events"),
                             Tab(text: "Series"),
-                            Tab(text: "Favoritos"),
+                            Tab(text: "Stories"),
                           ],
                         ),
                       ),
                       MarvelSepator.medium,
                       SizedBox(
-                        height: size.height,
+                        height: size.height / 2,
                         child: TabBarView(
                             controller: controller.tabController,
                             children: [
-                              _builListaEventsPersonagem(),
-                              _buildListaComicsPersonagem(),
+                              _builListaComicsPersonagem(),
+                              _buildListaEventsPersonagem(),
                               _buildListaSeriesPersonagem(),
-                              _buildListaFavoritosPersonagem()
+                              _buildListaStoriesPersonagem(),
                             ]),
                       ),
                     ],
@@ -139,47 +147,180 @@ class DetalhePersonagemPage extends GetView<DetalhePersonagemController> {
         });
   }
 
-  Widget _builListaEventsPersonagem() {
-    if (controller
-        .detalhePersongemViewmdel.events.listaEventMarvelViewmodel.isNotEmpty) {
-      return Container();
-    } else {
-      return const Center(
-        child: Text(
-          'Não há',
-          textAlign: TextAlign.left,
-          style: TextStyle(fontSize: 16, color: Colors.grey),
-        ),
-      );
+  Widget _builListaComicsPersonagem() {
+    if (controller.listaComics.isNotEmpty) {
+      return ListView.separated(
+          padding: EdgeInsets.zero,
+          physics: const ScrollPhysics(),
+          scrollDirection: Axis.vertical,
+          itemCount: controller.listaComics.length,
+          separatorBuilder: (context, index) {
+            return MarvelSepator.medium;
+          },
+          itemBuilder: (context, index) {
+            ObraViewmodel itemObraViewmodel = controller.listaComics[index];
+
+            if (index == controller.listaComics.length - 1) {
+              return Column(
+                children: [
+                  CardObra(
+                    id: ValueKey<int>(itemObraViewmodel.id),
+                    personagemName: itemObraViewmodel.title,
+                    personagemUrl:
+                        itemObraViewmodel.thumbnail.imagemComExtensao,
+                    onTapCard: () {},
+                  ),
+                  MarvelSepator.big
+                ],
+              );
+            }
+            return CardObra(
+              id: ValueKey<int>(itemObraViewmodel.id),
+              personagemName: itemObraViewmodel.title,
+              personagemUrl: itemObraViewmodel.thumbnail.imagemComExtensao,
+              onTapCard: () {},
+            );
+          });
     }
+    return Center(
+      child: Text(
+        'Não há Comics para ${controller.detalhePersongemViewmdel.name}',
+        textAlign: TextAlign.left,
+        style: const TextStyle(fontSize: 16, color: Colors.grey),
+      ),
+    );
   }
 
-  Widget _buildListaComicsPersonagem() {
-    return const Center(
+  Widget _buildListaEventsPersonagem() {
+    if (controller.listaEvent.isNotEmpty) {
+      return ListView.separated(
+          padding: EdgeInsets.zero,
+          physics: const ScrollPhysics(),
+          scrollDirection: Axis.vertical,
+          itemCount: controller.listaEvent.length,
+          separatorBuilder: (context, index) {
+            return MarvelSepator.medium;
+          },
+          itemBuilder: (context, index) {
+            ObraViewmodel itemObraViewmodel = controller.listaEvent[index];
+
+            if (index == controller.listaEvent.length - 1) {
+              return Column(
+                children: [
+                  CardObra(
+                    id: ValueKey<int>(itemObraViewmodel.id),
+                    personagemName: itemObraViewmodel.title,
+                    personagemUrl:
+                        itemObraViewmodel.thumbnail.imagemComExtensao,
+                    onTapCard: () {},
+                  ),
+                  MarvelSepator.big
+                ],
+              );
+            }
+            return CardObra(
+              id: ValueKey<int>(itemObraViewmodel.id),
+              personagemName: itemObraViewmodel.title,
+              personagemUrl: itemObraViewmodel.thumbnail.imagemComExtensao,
+              onTapCard: () {},
+            );
+          });
+    }
+    return Center(
       child: Text(
-        'Não há',
+        'Não há Events para ${controller.detalhePersongemViewmdel.name}',
         textAlign: TextAlign.left,
-        style: TextStyle(fontSize: 16, color: Colors.grey),
+        style: const TextStyle(fontSize: 16, color: Colors.grey),
       ),
     );
   }
 
   Widget _buildListaSeriesPersonagem() {
-    return const Center(
+    if (controller.listaSeries.isNotEmpty) {
+      return ListView.separated(
+          padding: EdgeInsets.zero,
+          physics: const ScrollPhysics(),
+          scrollDirection: Axis.vertical,
+          itemCount: controller.listaSeries.length,
+          separatorBuilder: (context, index) {
+            return MarvelSepator.medium;
+          },
+          itemBuilder: (context, index) {
+            ObraViewmodel itemObraViewmodel = controller.listaSeries[index];
+
+            if (index == controller.listaSeries.length - 1) {
+              return Column(
+                children: [
+                  CardObra(
+                    id: ValueKey<int>(itemObraViewmodel.id),
+                    personagemName: itemObraViewmodel.title,
+                    personagemUrl:
+                        itemObraViewmodel.thumbnail.imagemComExtensao,
+                    onTapCard: () {},
+                  ),
+                  MarvelSepator.big
+                ],
+              );
+            }
+            return CardObra(
+              id: ValueKey<int>(itemObraViewmodel.id),
+              personagemName: itemObraViewmodel.title,
+              personagemUrl: itemObraViewmodel.thumbnail.imagemComExtensao,
+              onTapCard: () {},
+            );
+          });
+    }
+
+    return Center(
       child: Text(
-        'Não há',
+        'Não há Series para ${controller.detalhePersongemViewmdel.name}',
         textAlign: TextAlign.left,
-        style: TextStyle(fontSize: 16, color: Colors.grey),
+        style: const TextStyle(fontSize: 16, color: Colors.grey),
       ),
     );
   }
 
-  Widget _buildListaFavoritosPersonagem() {
-    return const Center(
+  Widget _buildListaStoriesPersonagem() {
+    if (controller.listaStories.isNotEmpty) {
+      return ListView.separated(
+          padding: EdgeInsets.zero,
+          physics: const ScrollPhysics(),
+          scrollDirection: Axis.vertical,
+          itemCount: controller.listaStories.length,
+          separatorBuilder: (context, index) {
+            return MarvelSepator.medium;
+          },
+          itemBuilder: (context, index) {
+            ObraViewmodel itemObraViewmodel = controller.listaStories[index];
+
+            if (index == controller.listaStories.length - 1) {
+              return Column(
+                children: [
+                  CardObra(
+                    id: ValueKey<int>(itemObraViewmodel.id),
+                    personagemName: itemObraViewmodel.title,
+                    personagemUrl:
+                        itemObraViewmodel.thumbnail.imagemComExtensao,
+                    onTapCard: () {},
+                  ),
+                  MarvelSepator.big
+                ],
+              );
+            }
+            return CardObra(
+              id: ValueKey<int>(itemObraViewmodel.id),
+              personagemName: itemObraViewmodel.title,
+              personagemUrl: itemObraViewmodel.thumbnail.imagemComExtensao,
+              onTapCard: () {},
+            );
+          });
+    }
+
+    return Center(
       child: Text(
-        'Não há',
+        'Não há Stories para ${controller.detalhePersongemViewmdel.name}',
         textAlign: TextAlign.left,
-        style: TextStyle(fontSize: 16, color: Colors.grey),
+        style: const TextStyle(fontSize: 16, color: Colors.grey),
       ),
     );
   }

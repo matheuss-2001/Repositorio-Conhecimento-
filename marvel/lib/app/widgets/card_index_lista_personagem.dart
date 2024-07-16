@@ -5,15 +5,13 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class CardIndexListaPersonagem extends StatelessWidget {
   final ValueKey<int> id;
   final String personagemName;
-  final String personagemUrl;
-  final Function()? onDelete;
+  final String personagemPhotoUrl;
   final Function()? onTapCard;
 
   const CardIndexListaPersonagem(
       {required this.id,
       required this.personagemName,
-      required this.personagemUrl,
-      required this.onDelete,
+      required this.personagemPhotoUrl,
       required this.onTapCard});
 
   @override
@@ -53,84 +51,74 @@ class CardIndexListaPersonagem extends StatelessWidget {
               ],
             ),
           ),
-          child: IntrinsicHeight(
-            child: InkWell(
-              onTap: onTapCard,
-              child: Row(
+          child: InkWell(
+            onTap: onTapCard,
+            child: IntrinsicHeight(
+              child: Column(
                 children: [
-                  Container(
-                    constraints: const BoxConstraints(maxWidth: 200),
-                    child: CachedNetworkImage(
-                      fit: BoxFit.contain,
-                      imageUrl: personagemUrl,
-                      progressIndicatorBuilder: (context, url, progress) =>
-                          Container(
-                        height: 200,
-                        color: Colors.grey,
-                        child: const Center(
-                            child: CircularProgressIndicator.adaptive(
-                          valueColor:
-                              AlwaysStoppedAnimation<Color>(Colors.white),
-                        )),
-                      ),
-                      errorWidget: (context, url, error) => Container(
-                        height: 200,
-                        color: Colors.grey,
-                        child: const Center(
-                          child: Icon(
-                            Icons.photo,
-                            color: Colors.white,
-                            size: 50,
-                          ),
+                  CachedNetworkImage(
+                    fit: BoxFit.contain,
+                    imageUrl: personagemPhotoUrl,
+                    progressIndicatorBuilder: (context, url, progress) =>
+                        Container(
+                      height: 200,
+                      color: Colors.grey,
+                      child: const Center(
+                          child: CircularProgressIndicator.adaptive(
+                        valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                      )),
+                    ),
+                    errorWidget: (context, url, error) => Container(
+                      height: 250,
+                      color: Colors.grey,
+                      child: const Center(
+                        child: Icon(
+                          Icons.photo,
+                          color: Colors.white,
+                          size: 50,
                         ),
                       ),
                     ),
                   ),
-                  Expanded(
-                    child: Container(
-                      color: Colors.red.shade100,
+                  Container(
+                    color: Colors.red.shade100,
+                    child: Padding(
+                      padding: const EdgeInsets.all(16),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.all(4),
-                            child: Text(
-                              personagemName,
-                              maxLines: 5,
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w800,
-                                  fontSize: 16,
-                                  color: Colors.red.shade900),
-                            ),
+                          Text(
+                            personagemName,
+                            maxLines: 5,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontWeight: FontWeight.w800,
+                                fontSize: 16,
+                                color: Colors.red.shade900),
                           ),
-                          Container(
-                            constraints: const BoxConstraints(maxWidth: 150),
-                            child: ElevatedButton(
-                              onPressed: onTapCard,
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.red.shade800,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(14)),
-                              ),
-                              child: const Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "Detalhes",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  Icon(
-                                    Icons.arrow_forward_ios_rounded,
-                                    color: Colors.white,
-                                    size: 16,
-                                  )
-                                ],
-                              ),
+                          ElevatedButton(
+                            onPressed: onTapCard,
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.red,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(14)),
+                            ),
+                            child: const Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Detalhes",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                Icon(
+                                  Icons.arrow_forward_ios_rounded,
+                                  color: Colors.white,
+                                  size: 18,
+                                )
+                              ],
                             ),
                           )
                         ],

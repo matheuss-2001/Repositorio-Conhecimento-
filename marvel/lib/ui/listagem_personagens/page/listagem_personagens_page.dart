@@ -19,7 +19,16 @@ class ListagemPersonagensPage extends GetView<ListagemPersonagensController> {
 
   AppBar _buildAppBar() {
     return AppBar(
-      title: const Text("Personagens"),
+      backgroundColor: Colors.red,
+      centerTitle: true,
+      title: const Text(
+        "MARVEL",
+        style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.w600,
+            wordSpacing: 0.5,
+            fontSize: 25),
+      ),
     );
   }
 
@@ -28,7 +37,10 @@ class ListagemPersonagensPage extends GetView<ListagemPersonagensController> {
       id: "listaPersonagemBuilder",
       builder: (controller) {
         if (controller.gettingListaPersonagens) {
-          return Container();
+          return const Center(
+              child: CircularProgressIndicator(
+            color: Colors.red,
+          ));
         }
         return _listaPersonagemMarvel();
       },
@@ -52,9 +64,8 @@ class ListagemPersonagensPage extends GetView<ListagemPersonagensController> {
             return CardIndexListaPersonagem(
               id: ValueKey<int>(itemPersonagemIndex.id),
               personagemName: itemPersonagemIndex.name,
-              personagemUrl: itemPersonagemIndex
+              personagemPhotoUrl: itemPersonagemIndex
                   .imagemPersonagemViewmodel.imagemComExtensao,
-              onDelete: () {},
               onTapCard: () {
                 controller.onTapIndexListaCard(itemPersonagemIndex.id);
               },
