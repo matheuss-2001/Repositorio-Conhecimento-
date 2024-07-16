@@ -55,7 +55,9 @@ class ListagemPersonagensPage extends GetView<ListagemPersonagensController> {
               personagemUrl: itemPersonagemIndex
                   .imagemPersonagemViewmodel.imagemComExtensao,
               onDelete: () {},
-              onTapCard: () {},
+              onTapCard: () {
+                controller.onTapIndexListaCard(itemPersonagemIndex.id);
+              },
             );
           },
         ),

@@ -54,86 +54,91 @@ class CardIndexListaPersonagem extends StatelessWidget {
             ),
           ),
           child: IntrinsicHeight(
-            child: Row(
-              children: [
-                Container(
-                  constraints: const BoxConstraints(maxWidth: 200),
-                  child: CachedNetworkImage(
-                    fit: BoxFit.contain,
-                    imageUrl: personagemUrl,
-                    progressIndicatorBuilder: (context, url, progress) =>
-                        Container(
-                      height: 200,
-                      color: Colors.grey,
-                      child: const Center(
-                          child: CircularProgressIndicator.adaptive(
-                        valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                      )),
-                    ),
-                    errorWidget: (context, url, error) => Container(
-                      height: 200,
-                      color: Colors.grey,
-                      child: const Center(
-                        child: Icon(
-                          Icons.photo,
-                          color: Colors.white,
-                          size: 50,
+            child: InkWell(
+              onTap: onTapCard,
+              child: Row(
+                children: [
+                  Container(
+                    constraints: const BoxConstraints(maxWidth: 200),
+                    child: CachedNetworkImage(
+                      fit: BoxFit.contain,
+                      imageUrl: personagemUrl,
+                      progressIndicatorBuilder: (context, url, progress) =>
+                          Container(
+                        height: 200,
+                        color: Colors.grey,
+                        child: const Center(
+                            child: CircularProgressIndicator.adaptive(
+                          valueColor:
+                              AlwaysStoppedAnimation<Color>(Colors.white),
+                        )),
+                      ),
+                      errorWidget: (context, url, error) => Container(
+                        height: 200,
+                        color: Colors.grey,
+                        child: const Center(
+                          child: Icon(
+                            Icons.photo,
+                            color: Colors.white,
+                            size: 50,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-                Expanded(
-                  child: Container(
-                    color: Colors.red.shade100,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(4),
-                          child: Text(
-                            personagemName,
-                            maxLines: 5,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontWeight: FontWeight.w800,
-                                fontSize: 16,
-                                color: Colors.red.shade900),
-                          ),
-                        ),
-                        Container(
-                          constraints: const BoxConstraints(maxWidth: 150),
-                          child: ElevatedButton(
-                            onPressed: onTapCard,
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.red.shade800,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(14)),
-                            ),
-                            child: const Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Detalhes",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                Icon(
-                                  Icons.arrow_forward_ios_rounded,
-                                  color: Colors.white,
-                                  size: 16,
-                                )
-                              ],
+                  Expanded(
+                    child: Container(
+                      color: Colors.red.shade100,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(4),
+                            child: Text(
+                              personagemName,
+                              maxLines: 5,
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w800,
+                                  fontSize: 16,
+                                  color: Colors.red.shade900),
                             ),
                           ),
-                        )
-                      ],
+                          Container(
+                            constraints: const BoxConstraints(maxWidth: 150),
+                            child: ElevatedButton(
+                              onPressed: onTapCard,
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: Colors.red.shade800,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(14)),
+                              ),
+                              child: const Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "Detalhes",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Icon(
+                                    Icons.arrow_forward_ios_rounded,
+                                    color: Colors.white,
+                                    size: 16,
+                                  )
+                                ],
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           )),
     );
