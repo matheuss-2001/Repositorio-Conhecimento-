@@ -115,4 +115,6 @@ class ListagemPersonagensController extends GetxController {
       "idPersonagem": idPersonagem.toString(),
     });
   }
+
+
 }
