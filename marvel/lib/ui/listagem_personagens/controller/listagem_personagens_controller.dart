@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:marvel/app/routes/app_routes.dart';
 import 'package:marvel/app/widgets/marvel_dialog.dart';
 import 'package:marvel/ui/listagem_personagens/controller/listagem_personagens_repository.dart';
 import 'package:marvel/ui/listagem_personagens/data/model/marvel_data_viewmodel.dart';
@@ -107,5 +108,11 @@ class ListagemPersonagensController extends GetxController {
   void resetMarvelVariable() {
     marvelViewmodel = MarvelDataViewmodel(
         offset: 0, limit: 0, total: 0, count: 0, listaPersonagensViewmodel: []);
+  }
+
+  void onTapIndexListaCard(int idPersonagem) {
+    Get.toNamed(Routes.DETALHEPERSONAGEMSCREEN, arguments: {
+      "idPersonagem": idPersonagem.toString(),
+    });
   }
 }
