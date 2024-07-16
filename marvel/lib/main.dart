@@ -3,7 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:marvel/app/helpers/check_internet.dart';
 import 'package:marvel/app/helpers/get_device_info.dart';
+import 'package:marvel/app/helpers/initial_binding.dart';
 import 'app/routes/app_pages.dart';
 import 'app/routes/app_routes.dart';
 
@@ -14,10 +16,15 @@ Future<void> fetchDeviceInfo() async {
   Get.log("${box.read('deviceInfo')}");
 }
 
+Future<void> initInternetChecker() async {
+  Get.find<InternetChecker>().init();
+}
+
 void main() async {
   await GetStorage.init();
   runApp(const MyApp());
   await fetchDeviceInfo();
+  await initInternetChecker();
 }
 
 class MyApp extends StatelessWidget {
@@ -29,6 +36,7 @@ class MyApp extends StatelessWidget {
         const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
     return GetMaterialApp(
+      initialBinding: InitialBinding(),
       color: Colors.white,
       title: 'marvel',
       supportedLocales: const [Locale('pt', 'BR')],
