@@ -20,6 +20,7 @@ IOS:
 
 <img width="475" alt="Screenshot 2024-07-17 at 10 54 16 AM" src="https://github.com/user-attachments/assets/ad081202-8ece-4798-96d1-9233266880db">
 <img width="506" alt="Screenshot 2024-07-17 at 10 54 32 AM" src="https://github.com/user-attachments/assets/5e631fbf-3acc-4c6c-845a-1e43e3eeb1ee">
+<img width="478" alt="Screenshot 2024-07-17 at 11 01 48 AM" src="https://github.com/user-attachments/assets/81d30a08-4414-425a-9516-0c449a1063a6">
 <img width="488" alt="Screenshot 2024-07-17 at 10 55 13 AM" src="https://github.com/user-attachments/assets/b225e892-c7ad-45d5-9219-da366bfeab2e">
 
 
