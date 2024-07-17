@@ -12,14 +12,18 @@
 
   ANDROID :
 <img width="297" alt="Screenshot 2024-07-16 at 11 31 57 PM" src="https://github.com/user-attachments/assets/c8be89f6-d0a0-49bf-97ae-f40c6d6cd5fa">
-<img width="285" alt="Screenshot 2024-07-16 at 11 31 47 PM" src="https://github.com/user-attachments/assets/58c8a059-877c-44a5-9b6d-d5d3a39fdd6f">
-<img width="286" alt="Screenshot 2024-07-16 at 11 33 24 PM" src="https://github.com/user-attachments/assets/fdd82bac-516a-4686-8d0b-d6260c49b646">
-<img width="286" alt="Screenshot 2024-07-16 at 11 31 26 PM" src="https://github.com/user-attachments/assets/5670223f-9260-416e-9a8f-b6d971220a96">
+<img width="238" alt="Screenshot 2024-07-17 at 10 47 36 AM" src="https://github.com/user-attachments/assets/6b9bda04-6791-47d8-9743-f64204bbc447">
+<img width="236" alt="Screenshot 2024-07-17 at 10 47 51 AM" src="https://github.com/user-attachments/assets/a1115913-f33f-47f1-90ad-d7d7ef8f1758">
+<img width="236" alt="Screenshot 2024-07-17 at 10 48 10 AM" src="https://github.com/user-attachments/assets/5e282f19-7786-4bf7-92c6-3e397ad490bb">
 
 IOS:
-![IMG_1515](https://github.com/user-attachments/assets/c5bb31af-44de-48c1-a702-34ea636709e7)
-![IMG_1516](https://github.com/user-attachments/assets/b2be0f52-8a45-449e-8089-a19564f32cfd)
-![IMG_1517](https://github.com/user-attachments/assets/e6bed1c6-756e-4606-8191-43cfcb812382)
+<img width="475" alt="Screenshot 2024-07-17 at 10 54 16 AM" src="https://github.com/user-attachments/assets/ad081202-8ece-4798-96d1-9233266880db">
+<img width="506" alt="Screenshot 2024-07-17 at 10 54 32 AM" src="https://github.com/user-attachments/assets/5e631fbf-3acc-4c6c-845a-1e43e3eeb1ee">
+<img width="488" alt="Screenshot 2024-07-17 at 10 55 13 AM" src="https://github.com/user-attachments/assets/b225e892-c7ad-45d5-9219-da366bfeab2e">
+
+
+
+
 
 
 
