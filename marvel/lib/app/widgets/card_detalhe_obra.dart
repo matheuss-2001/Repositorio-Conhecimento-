@@ -2,17 +2,16 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class CardObra extends StatelessWidget {
+class CardDetalheObra extends StatelessWidget {
   final ValueKey<int> id;
   final String personagemName;
   final String personagemUrl;
-  final Function()? onTapCard;
 
-  const CardObra(
-      {required this.id,
-      required this.personagemName,
-      required this.personagemUrl,
-      required this.onTapCard});
+  const CardDetalheObra({
+    required this.id,
+    required this.personagemName,
+    required this.personagemUrl,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -51,9 +50,9 @@ class CardObra extends StatelessWidget {
               ],
             ),
           ),
-          child: IntrinsicHeight(
-            child: InkWell(
-              onTap: onTapCard,
+          child: Container(
+            color: Colors.red.shade100,
+            child: IntrinsicHeight(
               child: Row(
                 children: [
                   Container(
@@ -85,53 +84,18 @@ class CardObra extends StatelessWidget {
                     ),
                   ),
                   Expanded(
-                    child: Container(
-                      color: Colors.red.shade100,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(4),
-                            child: Text(
-                              personagemName,
-                              maxLines: 5,
-                              textAlign: TextAlign.center,
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.w800,
-                                  fontSize: 16,
-                                  color: Colors.red),
-                            ),
-                          ),
-                          Container(
-                            constraints: const BoxConstraints(maxWidth: 150),
-                            child: ElevatedButton(
-                              onPressed: onTapCard,
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.red,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(14)),
-                              ),
-                              child: const Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "Personagens",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  Icon(
-                                    Icons.arrow_forward_ios_rounded,
-                                    color: Colors.white,
-                                    size: 16,
-                                  )
-                                ],
-                              ),
-                            ),
-                          )
-                        ],
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(4),
+                        child: Text(
+                          personagemName,
+                          maxLines: 5,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                              fontWeight: FontWeight.w800,
+                              fontSize: 16,
+                              color: Colors.red),
+                        ),
                       ),
                     ),
                   ),

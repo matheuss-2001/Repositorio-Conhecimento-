@@ -1,6 +1,8 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:marvel/app/routes/app_routes.dart';
 import 'package:marvel/app/widgets/splash_screen.dart';
+import 'package:marvel/ui/detalhe_obra/binding/detalhe_obra_binding.dart';
+import 'package:marvel/ui/detalhe_obra/pages/detalhe_obra_page.dart';
 import 'package:marvel/ui/detalhe_personagem/binding/detalhe_pesonagem_binding.dart';
 import 'package:marvel/ui/detalhe_personagem/page/detalhe_personagem_page.dart';
 import 'package:marvel/ui/listagem_personagens/binding/listagem_personagens_binding.dart';
@@ -19,5 +21,10 @@ abstract class AppPages {
         name: Routes.DETALHEPERSONAGEMSCREEN,
         page: () => const DetalhePersonagemPage(),
         binding: DetalhePersonagemBinding()),
+    GetPage(
+        fullscreenDialog: true,
+        name: Routes.DETALHEOBRA,
+        page: () => const DetalheObraPage(),
+        binding: DetalheObraBinding()),
   ];
 }
