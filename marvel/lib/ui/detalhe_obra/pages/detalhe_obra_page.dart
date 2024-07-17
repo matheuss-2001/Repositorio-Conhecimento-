@@ -69,7 +69,7 @@ class DetalheObraPage extends GetView<DetalheObraController> {
                           padding: const EdgeInsets.all(12),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12),
-                            color: Colors.red.shade100,
+                            color: Colors.red,
                             border: Border.all(
                               color: const Color(0XFFCDCDCD),
                               width: 0.5,
@@ -79,14 +79,14 @@ class DetalheObraPage extends GetView<DetalheObraController> {
                                 offset: const Offset(0, 0.0),
                                 blurRadius: 8,
                                 spreadRadius: 2.0,
-                                color: Colors.black.withOpacity(0.05),
+                                color: Colors.black.withOpacity(0.01),
                               ),
                             ],
                           ),
                           child: const Text(
                             "PERSONAGENS",
                             style: const TextStyle(
-                                color: Colors.red,
+                                color: Colors.white,
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600),
                             textAlign: TextAlign.center,

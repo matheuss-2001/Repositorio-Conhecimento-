@@ -8,50 +8,53 @@ class CardObra extends StatelessWidget {
   final String personagemUrl;
   final Function()? onTapCard;
 
-  const CardObra(
-      {required this.id,
-      required this.personagemName,
-      required this.personagemUrl,
-      required this.onTapCard});
+  const CardObra({
+    required this.id,
+    required this.personagemName,
+    required this.personagemUrl,
+    required this.onTapCard,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(left: 16, right: 16),
+      margin: const EdgeInsets.symmetric(horizontal: 16),
       clipBehavior: Clip.antiAlias,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
         color: Colors.white,
         boxShadow: [
           BoxShadow(
-            offset: const Offset(0, 0.0),
-            blurRadius: 15.0,
+            offset: const Offset(0, 4.0),
+            blurRadius: 10.0,
             spreadRadius: 2.0,
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withOpacity(0.1),
           ),
         ],
       ),
       child: Dismissible(
-          key: id,
-          direction: DismissDirection.endToStart,
-          background: Container(
-            clipBehavior: Clip.antiAlias,
-            padding: const EdgeInsets.symmetric(horizontal: 25),
-            decoration: BoxDecoration(
-              color: Colors.red.shade100,
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child: Row(
-              children: [
-                const Spacer(),
-                FaIcon(
-                  FontAwesomeIcons.trashCan,
-                  color: Colors.red.shade500,
-                ),
-              ],
-            ),
+        key: id,
+        direction: DismissDirection.endToStart,
+        background: Container(
+          clipBehavior: Clip.antiAlias,
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          decoration: BoxDecoration(
+            color: Colors.red.shade100,
+            borderRadius: BorderRadius.circular(16),
           ),
-          child: IntrinsicHeight(
+          child: Row(
+            children: [
+              const Spacer(),
+              FaIcon(
+                FontAwesomeIcons.trashCan,
+                color: Colors.red.shade500,
+              ),
+            ],
+          ),
+        ),
+        child: IntrinsicHeight(
+          child: Container(
+            color: Colors.red.shade50,
             child: InkWell(
               onTap: onTapCard,
               child: Row(
@@ -59,25 +62,25 @@ class CardObra extends StatelessWidget {
                   Container(
                     constraints: const BoxConstraints(maxWidth: 200),
                     child: CachedNetworkImage(
-                      fit: BoxFit.contain,
+                      fit: BoxFit.cover,
                       imageUrl: personagemUrl,
-                      progressIndicatorBuilder: (context, url, progress) =>
-                          Container(
+                      placeholder: (context, url) => Container(
                         height: 200,
-                        color: Colors.grey,
+                        color: Colors.grey.shade300,
                         child: const Center(
-                            child: CircularProgressIndicator.adaptive(
-                          valueColor:
-                              AlwaysStoppedAnimation<Color>(Colors.white),
-                        )),
+                          child: CircularProgressIndicator.adaptive(
+                            valueColor:
+                                AlwaysStoppedAnimation<Color>(Colors.red),
+                          ),
+                        ),
                       ),
                       errorWidget: (context, url, error) => Container(
                         height: 200,
-                        color: Colors.grey,
+                        color: Colors.grey.shade300,
                         child: const Center(
                           child: Icon(
                             Icons.photo,
-                            color: Colors.white,
+                            color: Colors.red,
                             size: 50,
                           ),
                         ),
@@ -85,52 +88,49 @@ class CardObra extends StatelessWidget {
                     ),
                   ),
                   Expanded(
-                    child: Container(
-                      color: Colors.red.shade100,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.all(4),
-                            child: Text(
-                              personagemName,
-                              maxLines: 5,
-                              textAlign: TextAlign.center,
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.w800,
-                                  fontSize: 16,
-                                  color: Colors.red),
+                          Text(
+                            personagemName,
+                            maxLines: 3,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.w800,
+                              fontSize: 16,
+                              color: Colors.red,
                             ),
                           ),
-                          Container(
-                            constraints: const BoxConstraints(maxWidth: 150),
-                            child: ElevatedButton(
-                              onPressed: onTapCard,
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.red,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(14)),
-                              ),
-                              child: const Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "Personagens",
-                                    style: TextStyle(
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold),
-                                  ),
-                                  Icon(
-                                    Icons.arrow_forward_ios_rounded,
-                                    color: Colors.white,
-                                    size: 16,
-                                  )
-                                ],
+                          ElevatedButton(
+                            onPressed: onTapCard,
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.red,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(14),
                               ),
                             ),
-                          )
+                            child: const Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Personagens",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                  ),
+                                ),
+                                Icon(
+                                  Icons.arrow_forward_ios_rounded,
+                                  color: Colors.white,
+                                  size: 16,
+                                )
+                              ],
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -138,7 +138,9 @@ class CardObra extends StatelessWidget {
                 ],
               ),
             ),
-          )),
+          ),
+        ),
+      ),
     );
   }
 }
