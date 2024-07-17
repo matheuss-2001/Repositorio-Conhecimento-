@@ -35,7 +35,7 @@ class CardDetalheObra extends StatelessWidget {
           direction: DismissDirection.endToStart,
           background: Container(
             clipBehavior: Clip.antiAlias,
-            padding: const EdgeInsets.symmetric(horizontal: 25),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             decoration: BoxDecoration(
               color: Colors.red.shade100,
               borderRadius: BorderRadius.circular(16),
@@ -51,7 +51,7 @@ class CardDetalheObra extends StatelessWidget {
             ),
           ),
           child: Container(
-            color: Colors.red.shade100,
+            color: Colors.red.shade50,
             child: IntrinsicHeight(
               child: Row(
                 children: [

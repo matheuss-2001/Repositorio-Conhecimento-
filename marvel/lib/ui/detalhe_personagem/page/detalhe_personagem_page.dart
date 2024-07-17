@@ -71,7 +71,7 @@ class DetalhePersonagemPage extends GetView<DetalhePersonagemController> {
                           padding: const EdgeInsets.all(12),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12),
-                            color: Theme.of(context).cardColor,
+                            color: Colors.red,
                             border: Border.all(
                               color: const Color(0XFFCDCDCD),
                               width: 0.5,
@@ -91,13 +91,13 @@ class DetalhePersonagemPage extends GetView<DetalhePersonagemController> {
                                   style: const TextStyle(
                                       fontSize: 16,
                                       fontWeight: FontWeight.w600,
-                                      color: Colors.red),
+                                      color: Colors.white),
                                   textAlign: TextAlign.center),
                               Text(
                                   controller
                                       .detalhePersongemViewmdel.description,
                                   style: const TextStyle(
-                                      fontSize: 16, color: Colors.red),
+                                      fontSize: 16, color: Colors.white),
                                   textAlign: TextAlign.center),
                             ],
                           ),
