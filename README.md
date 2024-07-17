@@ -7,6 +7,8 @@
 - get informacoes telefone pelo CHANNEL e salvando as info do device no GETstorage no cache (DONE)
 - Verificando em background se o cel esta conectado a internet , caso nao exibir um dialog (DONE)
 - Fluxo clique detalhe Obra(Event,Serie,COMICS,STORIES) per id LISTAR Personagens da obra clicada. (DONE)
-- IOS build (DOING)
+- IOS build (DONE)
+
+
   
 
