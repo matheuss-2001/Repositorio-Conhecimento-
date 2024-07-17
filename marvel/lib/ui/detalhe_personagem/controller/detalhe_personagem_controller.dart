@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:marvel/app/routes/app_routes.dart';
 import 'package:marvel/app/widgets/marvel_dialog.dart';
+import 'package:marvel/ui/detalhe_obra/controller/detalhe_obra_controller.dart';
 import 'package:marvel/ui/detalhe_personagem/controller/detalhe_personagem_repository.dart';
 import 'package:marvel/ui/detalhe_personagem/data/models/obra_viewmodel.dart';
 import 'package:marvel/ui/listagem_personagens/data/model/imagem_personagem_viewmodel.dart';
@@ -241,5 +243,13 @@ class DetalhePersonagemController extends GetxController
     await _getStoriesRelacionadoPersonagem();
     gettingPersonagemDetalhe = false;
     update(["builderDetalhePersonagem"]);
+  }
+
+  void onTapCardObra(ObraViewmodel itemObraViewmodel, ObraType obraType) {
+    Get.toNamed(Routes.DETALHEOBRA, arguments: {
+      "idObra": itemObraViewmodel.id.toString(),
+      "obraUrlPhoto": itemObraViewmodel.thumbnail.imagemComExtensao,
+      "obraType": obraType
+    });
   }
 }

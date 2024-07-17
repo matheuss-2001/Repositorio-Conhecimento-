@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marvel/app/helpers/global_variables.dart';
 import 'package:marvel/app/widgets/card_obra.dart';
+import 'package:marvel/ui/detalhe_obra/controller/detalhe_obra_controller.dart';
 import 'package:marvel/ui/detalhe_personagem/controller/detalhe_personagem_controller.dart';
 import 'package:marvel/ui/detalhe_personagem/data/models/obra_viewmodel.dart';
 
@@ -86,17 +87,18 @@ class DetalhePersonagemPage extends GetView<DetalhePersonagemController> {
                           ),
                           child: Column(
                             children: [
+                              Text(controller.detalhePersongemViewmdel.name,
+                                  style: const TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.red),
+                                  textAlign: TextAlign.center),
                               Text(
-                                controller.detalhePersongemViewmdel.name,
-                                style: const TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.w600),
-                                textAlign: TextAlign.center,
-                              ),
-                              Text(
-                                controller.detalhePersongemViewmdel.description,
-                                style: const TextStyle(fontSize: 16),
-                                textAlign: TextAlign.center,
-                              ),
+                                  controller
+                                      .detalhePersongemViewmdel.description,
+                                  style: const TextStyle(
+                                      fontSize: 16, color: Colors.red),
+                                  textAlign: TextAlign.center),
                             ],
                           ),
                         ),
@@ -168,7 +170,10 @@ class DetalhePersonagemPage extends GetView<DetalhePersonagemController> {
                     personagemName: itemObraViewmodel.title,
                     personagemUrl:
                         itemObraViewmodel.thumbnail.imagemComExtensao,
-                    onTapCard: () {},
+                    onTapCard: () {
+                      controller.onTapCardObra(
+                          itemObraViewmodel, ObraType.COMIC);
+                    },
                   ),
                   MarvelSepator.big
                 ],
@@ -178,7 +183,9 @@ class DetalhePersonagemPage extends GetView<DetalhePersonagemController> {
               id: ValueKey<int>(itemObraViewmodel.id),
               personagemName: itemObraViewmodel.title,
               personagemUrl: itemObraViewmodel.thumbnail.imagemComExtensao,
-              onTapCard: () {},
+              onTapCard: () {
+                controller.onTapCardObra(itemObraViewmodel, ObraType.COMIC);
+              },
             );
           });
     }
@@ -212,7 +219,10 @@ class DetalhePersonagemPage extends GetView<DetalhePersonagemController> {
                     personagemName: itemObraViewmodel.title,
                     personagemUrl:
                         itemObraViewmodel.thumbnail.imagemComExtensao,
-                    onTapCard: () {},
+                    onTapCard: () {
+                      controller.onTapCardObra(
+                          itemObraViewmodel, ObraType.EVENT);
+                    },
                   ),
                   MarvelSepator.big
                 ],
@@ -222,7 +232,9 @@ class DetalhePersonagemPage extends GetView<DetalhePersonagemController> {
               id: ValueKey<int>(itemObraViewmodel.id),
               personagemName: itemObraViewmodel.title,
               personagemUrl: itemObraViewmodel.thumbnail.imagemComExtensao,
-              onTapCard: () {},
+              onTapCard: () {
+                controller.onTapCardObra(itemObraViewmodel, ObraType.EVENT);
+              },
             );
           });
     }
@@ -256,7 +268,10 @@ class DetalhePersonagemPage extends GetView<DetalhePersonagemController> {
                     personagemName: itemObraViewmodel.title,
                     personagemUrl:
                         itemObraViewmodel.thumbnail.imagemComExtensao,
-                    onTapCard: () {},
+                    onTapCard: () {
+                      controller.onTapCardObra(
+                          itemObraViewmodel, ObraType.SERIE);
+                    },
                   ),
                   MarvelSepator.big
                 ],
@@ -266,7 +281,9 @@ class DetalhePersonagemPage extends GetView<DetalhePersonagemController> {
               id: ValueKey<int>(itemObraViewmodel.id),
               personagemName: itemObraViewmodel.title,
               personagemUrl: itemObraViewmodel.thumbnail.imagemComExtensao,
-              onTapCard: () {},
+              onTapCard: () {
+                controller.onTapCardObra(itemObraViewmodel, ObraType.SERIE);
+              },
             );
           });
     }
@@ -301,7 +318,10 @@ class DetalhePersonagemPage extends GetView<DetalhePersonagemController> {
                     personagemName: itemObraViewmodel.title,
                     personagemUrl:
                         itemObraViewmodel.thumbnail.imagemComExtensao,
-                    onTapCard: () {},
+                    onTapCard: () {
+                      controller.onTapCardObra(
+                          itemObraViewmodel, ObraType.STORY);
+                    },
                   ),
                   MarvelSepator.big
                 ],
@@ -311,7 +331,9 @@ class DetalhePersonagemPage extends GetView<DetalhePersonagemController> {
               id: ValueKey<int>(itemObraViewmodel.id),
               personagemName: itemObraViewmodel.title,
               personagemUrl: itemObraViewmodel.thumbnail.imagemComExtensao,
-              onTapCard: () {},
+              onTapCard: () {
+                controller.onTapCardObra(itemObraViewmodel, ObraType.STORY);
+              },
             );
           });
     }
