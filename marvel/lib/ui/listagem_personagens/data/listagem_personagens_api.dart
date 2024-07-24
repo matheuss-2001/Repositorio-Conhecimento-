@@ -5,12 +5,11 @@ class ListagemPersonagensApi extends GetConnect {
   @override
   void onInit() {
     super.onInit();
-    timeout = const Duration(seconds: 40);
   }
 
   Future<Response<dynamic>> getListagemPersonagens() async {
     final Map<String, String> params = Auth.getCredentials();
     final String url = baseUrlString("/v1/public/characters", params);
-    return await get(url).timeout(timeout);
+    return await get(url).timeout(Auth.timeout);
   }
 }
