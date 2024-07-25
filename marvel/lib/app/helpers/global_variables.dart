@@ -17,10 +17,8 @@ abstract class MarvelSepator {
 }
 
 abstract class Auth {
-
   static String publicKey = "8139bef35741d0afe481ff0fa568b527";
   static String privateKey = "9717ad3e4a7e963a8a609fcd8be54e529d5d59d1";
-  static Duration  timeout = const Duration(seconds: 150);
 
   static Map<String, String> getCredentials() {
     DateTime currentDateTime = DateTime.now();
