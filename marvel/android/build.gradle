@@ -1,3 +1,11 @@
+ext {
+    kotlin_version     = '1.9.25'
+    compileSdkVersion   = 35
+    targetSdkVersion    = 35
+    minSdkVersion       = 24
+
+}
+
 allprojects {
     repositories {
         google()
