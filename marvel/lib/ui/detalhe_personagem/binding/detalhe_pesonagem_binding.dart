@@ -8,9 +8,7 @@ class DetalhePersonagemBinding implements Bindings {
   @override
   void dependencies() {
     Get.put(DetalhePersonagemApi());
-    Get.lazyPut<DetalhePersonagemRepository>(
-        () => DetalhePersonagemRepositoryImpl(Get.find()));
-    Get.lazyPut<DetalhePersonagemController>(
-        () => DetalhePersonagemController(Get.find()));
+    Get.lazyPut<DetalhePersonagemRepository>(() => DetalhePersonagemRepositoryImpl(Get.find()));
+    Get.lazyPut<DetalhePersonagemController>(() => DetalhePersonagemController(Get.find()));
   }
 }
