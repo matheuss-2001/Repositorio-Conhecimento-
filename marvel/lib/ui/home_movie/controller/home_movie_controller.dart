@@ -9,6 +9,7 @@ class HomeMovieController extends GetxController {
 
   int currentNowPlayingPaginationIndex = 1;
   int currentPopularPaginationIndex = 1;
+
   bool loadingNowPlayingMovie = true;
   bool loadingPopularMovie = true;
 
