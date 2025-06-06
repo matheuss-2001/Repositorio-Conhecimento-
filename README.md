@@ -1,7 +1,7 @@
 MOVIE
-
-- Service de Api Buscar popular movie e playing now (DOING)
-- Componentizando Item Movie (TO DO)
+- Orzaniando Movie Folder (DONE)
+- Service de Api Buscar popular movie e playing now (DONE)
+- Componentizando Item Movie (DOING)
 - Splash Com logo Movie TMDB (TO DO)
 - Service  API buscar detalhe Movie (TO DO)
 - Tela Detalhe Movie (TO DO)
