@@ -1,5 +1,7 @@
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:marvel/app/routes/app_routes.dart';
+import 'package:marvel/ui/detail_movie/binding/detail_movie_binding.dart';
+import 'package:marvel/ui/detail_movie/page/detail_movie_page.dart';
 import 'package:marvel/ui/splash/pages/splash_screen_marvel.dart';
 import 'package:marvel/ui/detalhe_obra/binding/detalhe_obra_binding.dart';
 import 'package:marvel/ui/detalhe_obra/pages/detalhe_obra_page.dart';
@@ -20,6 +22,12 @@ abstract class AppPages {
       name: Routes.HOMEMOVIEPAGE,
       page: () => const HomeMoviePage(),
       binding: HomeMovieBinding(),
+    ),
+    GetPage(
+      fullscreenDialog: true,
+      name: Routes.DETAILMOVIEPAGE,
+      page: () => const DetailMoviePage(),
+      binding: DetailMovieBinding(),
     ),
     GetPage(
       fullscreenDialog: true,

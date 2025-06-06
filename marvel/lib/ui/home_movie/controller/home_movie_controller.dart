@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:marvel/app/routes/app_routes.dart';
 import 'package:marvel/ui/home_movie/controller/home_movie_repository.dart';
 import 'package:marvel/ui/home_movie/data/model/movie_viewmodel.dart';
 
@@ -59,5 +60,9 @@ class HomeMovieController extends GetxController {
   void _gettingPopularMovie(bool value) {
     loadingPopularMovie = value;
     update(["builderPopularMovie"]);
+  }
+
+  void onTapMovieBanner(MovieViewModel itemNowPlayingMovie) {
+    Get.toNamed(Routes.DETAILMOVIEPAGE, arguments: {"id_movie": itemNowPlayingMovie.idMovie});
   }
 }
