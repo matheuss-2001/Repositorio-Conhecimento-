@@ -64,6 +64,9 @@ class HomeMoviePage extends GetView<HomeMovieController> {
                 movieTitle: itemNowPlayingMovie.movieTitle,
                 movieBackgroundImage: itemNowPlayingMovie.movieBackgroundImage,
                 movieRating: itemNowPlayingMovie.movieRate,
+                onTapCard: () {
+                  controller.onTapMovieBanner(itemNowPlayingMovie);
+                },
               );
             },
           ),
@@ -100,6 +103,9 @@ class HomeMoviePage extends GetView<HomeMovieController> {
                 movieTitle: itemNowPlayingMovie.movieTitle,
                 movieBackgroundImage: itemNowPlayingMovie.movieBackgroundImage,
                 movieRating: itemNowPlayingMovie.movieRate,
+                onTapCard: () {
+                  controller.onTapMovieBanner(itemNowPlayingMovie);
+                },
               );
             },
           ),
