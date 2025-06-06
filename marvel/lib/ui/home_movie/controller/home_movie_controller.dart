@@ -8,8 +8,8 @@ class HomeMovieController extends GetxController {
 
   int currentNowPlayingPaginationIndex = 1;
   int currentPopularPaginationIndex = 1;
-  bool loadingNowPlayingMovie = false;
-  bool loadingPopularMovie = false;
+  bool loadingNowPlayingMovie = true;
+  bool loadingPopularMovie = true;
 
   List<MovieViewModel> listNowPLayingViewModel = <MovieViewModel>[];
   List<MovieViewModel> listPopularViewModel = <MovieViewModel>[];
