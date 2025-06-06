@@ -9,10 +9,12 @@ import 'package:marvel/ui/home_movie/binding/home_movie_binding.dart';
 import 'package:marvel/ui/home_movie/page/home_movie_page.dart';
 import 'package:marvel/ui/listagem_personagens/binding/listagem_personagens_binding.dart';
 import 'package:marvel/ui/listagem_personagens/page/listagem_personagens_page.dart';
+import 'package:marvel/ui/splash/pages/splash_screen_movie.dart';
 
 abstract class AppPages {
   static final pages = [
     GetPage(name: Routes.SPLASHSCREENMARVEL, page: () => const SplashScreenMarvel()),
+    GetPage(name: Routes.SPLASHSCREENMOVIE, page: () => const SplashScreenMovie()),
     GetPage(
       fullscreenDialog: true,
       name: Routes.HOMEMOVIEPAGE,
@@ -37,6 +39,5 @@ abstract class AppPages {
       page: () => const DetalheObraPage(),
       binding: DetalheObraBinding(),
     ),
-
   ];
 }

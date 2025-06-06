@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:marvel/app/helpers/global_variables.dart';
 import 'package:marvel/app/widgets/movie_widget/movie_banner.dart';
 import 'package:marvel/ui/home_movie/controller/home_movie_controller.dart';
 import 'package:marvel/ui/home_movie/data/model/movie_viewmodel.dart';
@@ -14,7 +15,7 @@ class HomeMoviePage extends GetView<HomeMovieController> {
   }
 
   AppBar _buildAppBar() {
-    return AppBar();
+    return AppBar(toolbarHeight: 70, title: Image.asset(GlobalVariableAssets.logoMovie, height: 32), centerTitle: true);
   }
 
   Padding _buildBody() {
@@ -27,7 +28,7 @@ class HomeMoviePage extends GetView<HomeMovieController> {
           const SizedBox(height: 16),
           _buildNowPlayingMovie(),
           const SizedBox(height: 16),
-          const Text('Populares', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, letterSpacing: 0.5)),
+          const Text('Popular', style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, letterSpacing: 0.5)),
           const SizedBox(height: 16),
           _buildPopularMovie(),
         ],

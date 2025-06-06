@@ -1,32 +1,34 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:marvel/app/helpers/global_variables.dart';
 import 'package:marvel/app/routes/app_routes.dart';
 
-class SplashScreenMarvel extends StatefulWidget {
-  const SplashScreenMarvel({Key? key}) : super(key: key);
+class SplashScreenMovie extends StatefulWidget {
+  const SplashScreenMovie({Key? key}) : super(key: key);
 
   @override
-  State<SplashScreenMarvel> createState() => _SplashScreenMarvelState();
+  State<SplashScreenMovie> createState() => _SplashScreenMarvelState();
 }
 
-class _SplashScreenMarvelState extends State<SplashScreenMarvel> with SingleTickerProviderStateMixin {
+class _SplashScreenMarvelState extends State<SplashScreenMovie> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(backgroundColor: Colors.red, body: _buildBody());
+    return Scaffold(backgroundColor: Colors.blue, body: _buildBody());
   }
 
   Widget _buildBody() {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
+        Image.asset(GlobalVariableAssets.logoMovie),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             AnimatedTextKit(
               animatedTexts: [
                 TypewriterAnimatedText(
-                  'MARVEL',
+                  'TMDB',
                   textStyle: const TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color: Colors.white),
                   speed: const Duration(milliseconds: 150),
                   cursor: "",
@@ -37,7 +39,7 @@ class _SplashScreenMarvelState extends State<SplashScreenMarvel> with SingleTick
               stopPauseOnTap: false,
               repeatForever: false,
               onFinished: () {
-                Get.offAllNamed(Routes.LISTAGEMPERSONAGEMSCREEN);
+                Get.offAllNamed(Routes.HOMEMOVIEPAGE);
               },
             ),
           ],

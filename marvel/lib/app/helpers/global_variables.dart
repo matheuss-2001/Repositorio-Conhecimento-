@@ -57,3 +57,9 @@ abstract class Auth {
     }
   }
 }
+
+abstract class GlobalVariableAssets {
+  static const String logoMovie = 'assets/logo_assets/logo_movie.png';
+}
+
+

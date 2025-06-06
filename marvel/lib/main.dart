@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
       transitionDuration: const Duration(milliseconds: 450),
       debugShowCheckedModeBanner: false,
       getPages: AppPages.pages,
-      initialRoute: Routes.SPLASHSCREENMARVEL,
+      initialRoute: Routes.SPLASHSCREENMOVIE,
     );
   }
 }
