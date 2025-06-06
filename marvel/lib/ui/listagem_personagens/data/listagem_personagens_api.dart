@@ -9,7 +9,7 @@ class ListagemPersonagensApi extends GetConnect {
   }
 
   Future<Response<dynamic>> getListagemPersonagens() async {
-    final Map<String, String> params = Auth.getCredentials();
+    final Map<String, String> params = Auth.getCredentialMarvel();
     final String url = baseUrlMarvelString("/v1/public/characters", params);
     return await get(url).timeout(timeout);
   }

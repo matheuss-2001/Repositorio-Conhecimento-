@@ -8,8 +8,9 @@ String baseUrlMarvelString(String path, [Map<String, dynamic>? queryParameters])
   final Uri uri = Uri.https("gateway.marvel.com", path, queryParameters);
   return uri.toString();
 }
+
 String baseUrlMovieString(String path, [Map<String, dynamic>? queryParameters]) {
-  final Uri uri = Uri.https("api.themoviedb.org/3/movie", path, queryParameters);
+  final Uri uri = Uri.https("api.themoviedb.org", path, queryParameters);
   return uri.toString();
 }
 
@@ -28,7 +29,7 @@ abstract class Auth {
       "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyMmY0Y2ViYTQ0Yjk0MjQ3YTcxMGYzMzFhOTllNjI3ZCIsIm5iZiI6MTc0OTEzNzkwMC4wNiwic3ViIjoiNjg0MWI5ZWNjMDg5YzBmMDM4YmYxNTNiIiwic2NvcGVzIjpbImFwaV9yZWFkIl0sInZlcnNpb24iOjF9.dep1IXXBv8luKmCPm9ZcP6yf604RQpVF-7atTsuHU2Q";
   static String apiMovieKey = "22f4ceba44b94247a710f331a99e627d";
 
-  static Map<String, String> getCredentials() {
+  static Map<String, String> getCredentialMarvel() {
     DateTime currentDateTime = DateTime.now();
     try {
       Get.log("REQUEST: $currentDateTime");
@@ -38,6 +39,18 @@ abstract class Auth {
       final Digest md5Digest = md5.convert(bytesToHash);
 
       return <String, String>{"ts": ts, "apikey": publicKeyMarvel, "hash": md5Digest.toString().toLowerCase()};
+    } catch (e) {
+      Get.log("CREDENTIALS ERROR: ${e.toString()}");
+      return <String, String>{};
+    }
+  }
+
+  static Map<String, String> getCredentialMovie() {
+    DateTime currentDateTime = DateTime.now();
+    try {
+      Get.log("REQUEST: $currentDateTime");
+
+      return <String, String>{"api_key": apiMovieKey, "language": "pt-BR"};
     } catch (e) {
       Get.log("CREDENTIALS ERROR: ${e.toString()}");
       return <String, String>{};
