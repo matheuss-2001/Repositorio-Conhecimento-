@@ -16,7 +16,16 @@ class HomeMoviePage extends GetView<HomeMovieController> {
     return AppBar();
   }
 
-  Container _buildBody() {
-    return Container();
+  Column _buildBody() {
+    return Column(children: [_buildNowPlayingMovie()]);
+  }
+
+  GetBuilder _buildNowPlayingMovie() {
+    return GetBuilder<HomeMovieController>(
+      id: "builderNowPlayingMovie",
+      builder: (controller) {
+        return Container();
+      },
+    );
   }
 }

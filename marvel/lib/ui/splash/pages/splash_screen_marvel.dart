@@ -3,15 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:marvel/app/routes/app_routes.dart';
 
-class SplashPage extends StatefulWidget {
-  const SplashPage({Key? key}) : super(key: key);
+class SplashScreenMarvel extends StatefulWidget {
+  const SplashScreenMarvel({Key? key}) : super(key: key);
 
   @override
-  State<SplashPage> createState() => _SplashPageState();
+  State<SplashScreenMarvel> createState() => _SplashScreenMarvelState();
 }
 
-class _SplashPageState extends State<SplashPage>
-    with SingleTickerProviderStateMixin {
+class _SplashScreenMarvelState extends State<SplashScreenMarvel> with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(backgroundColor: Colors.red, body: _buildBody());
@@ -28,10 +27,7 @@ class _SplashPageState extends State<SplashPage>
               animatedTexts: [
                 TypewriterAnimatedText(
                   'MARVEL',
-                  textStyle: const TextStyle(
-                      fontSize: 40,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white),
+                  textStyle: const TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color: Colors.white),
                   speed: const Duration(milliseconds: 150),
                   cursor: "",
                 ),
@@ -41,11 +37,11 @@ class _SplashPageState extends State<SplashPage>
               stopPauseOnTap: false,
               repeatForever: false,
               onFinished: () {
-                Get.offAllNamed(Routes.LISTAGEMPERSONAGEMSCREEN);
+                Get.offAllNamed(Routes.HOMEMOVIEPAGE);
               },
             ),
           ],
-        )
+        ),
       ],
     );
   }
