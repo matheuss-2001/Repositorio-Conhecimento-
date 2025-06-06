@@ -34,7 +34,7 @@ class HomeMovieRepositoryImpl implements HomeMovieRepository {
   @override
   Future<Either<Failure, List<MovieViewModel>>> getPopularMovie(int paginationIndex) async {
     try {
-      response = await _homeMovieApi.getNowPLayingMovie(paginationIndex);
+      response = await _homeMovieApi.getPopularMovie(paginationIndex);
 
       if (response.statusCode == 200) {
         final listMovieViewModel = List.from(response.body!['results']).map((e) => MovieViewModel.fromJson(e)).toList();
