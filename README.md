@@ -3,8 +3,8 @@ MOVIE
 - Service de Api Buscar popular movie e playing now (DONE)
 - Componentizando Item Movie (DONE)
 - Splash Com logo Movie TMDB (DONE)
-- Service  API buscar detalhe Movie (DOING)
-- Tela Detalhe Movie (TO DO)
+- Service  API buscar detalhe Movie (DONE)
+- Tela Detalhe Movie (DOING)
 
 
 
