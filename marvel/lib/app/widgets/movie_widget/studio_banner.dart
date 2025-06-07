@@ -52,13 +52,14 @@ class StudioBanner extends StatelessWidget {
               alignment: AlignmentDirectional.center,
               children: [
                 if (studioBackgroundImage.isEmpty) ...[
-                  Container(alignment: Alignment.center, color: Colors.grey),
                   Container(
+                    decoration: BoxDecoration(color: Colors.grey.shade300, shape: BoxShape.circle),
+                    alignment: Alignment.center,
+                  ),
+                  Container(
+                    alignment: Alignment.center,
                     decoration: const BoxDecoration(color: Colors.black38, shape: BoxShape.circle),
-                    child: const Padding(
-                      padding: EdgeInsets.all(16),
-                      child: Icon(Icons.store, color: Colors.white70, size: 50),
-                    ),
+                    child: const Icon(Icons.photo, color: Colors.white70, size: 28),
                   ),
                 ],
               ],

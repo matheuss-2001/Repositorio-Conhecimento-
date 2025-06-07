@@ -51,6 +51,21 @@ class DetailMovieViewModel {
     );
   }
 
+  Map<String, dynamic> toJson() {
+    return {
+      "id": id,
+      "poster_path": movieBackgroundImage,
+      "backdrop_path": movieBackgroundImageTwo,
+      "original_title": movieTitle,
+      "overview": movieDescription,
+      "vote_average": movieRate,
+      "budget": movieBudget,
+      "release_date": movieReleaseDate,
+      "genres": listGenreViewmodel.map((genre) => genre.toJson()).toList(),
+      "production_companies": listStudioViewmodel.map((studio) => studio.toJson()).toList(),
+    };
+  }
+
   String getReleaseDateFormated() {
     try {
       DateTime dateTime = DateTime.parse(movieReleaseDate);

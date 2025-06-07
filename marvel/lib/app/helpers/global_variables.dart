@@ -3,6 +3,9 @@ import 'package:crypto/crypto.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:get_storage/get_storage.dart';
+
+final GetStorage box = GetStorage();
 
 String baseUrlMarvelString(String path, [Map<String, dynamic>? queryParameters]) {
   final Uri uri = Uri.https("gateway.marvel.com", path, queryParameters);
@@ -61,5 +64,3 @@ abstract class Auth {
 abstract class GlobalVariableAssets {
   static const String logoMovie = 'assets/logo_assets/logo_movie.png';
 }
-
-

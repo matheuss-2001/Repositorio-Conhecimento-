@@ -1,7 +1,10 @@
 import 'package:get/get.dart';
 import 'package:marvel/app/routes/app_routes.dart';
+import 'package:marvel/ui/detail_movie/data/model/detail_movie_viewmodel.dart';
 import 'package:marvel/ui/home_movie/controller/home_movie_repository.dart';
 import 'package:marvel/ui/home_movie/data/model/movie_viewmodel.dart';
+
+import '../../../app/helpers/global_variables.dart';
 
 class HomeMovieController extends GetxController {
   final HomeMovieRepository _homeMovieRepository;
@@ -12,20 +15,23 @@ class HomeMovieController extends GetxController {
 
   bool loadingNowPlayingMovie = true;
   bool loadingPopularMovie = true;
+  bool loadingFavoriteMovie = true;
 
   List<MovieViewModel> listNowPLayingViewModel = <MovieViewModel>[];
   List<MovieViewModel> listPopularViewModel = <MovieViewModel>[];
+  List<DetailMovieViewModel> listFavoriteViewModel = <DetailMovieViewModel>[];
 
   @override
   void onInit() {
-    _initApiHome();
+    initApiHome();
     super.onInit();
   }
 
-  Future<void> _initApiHome() async {
+  Future<void> initApiHome() async {
     emptyListMovie();
     await _getNowPlayingMovie();
     await _getPopularMovie();
+    await _getFavoriteUserMovie();
   }
 
   void emptyListMovie() {
@@ -33,6 +39,7 @@ class HomeMovieController extends GetxController {
     currentPopularPaginationIndex = 1;
     listNowPLayingViewModel = [];
     listPopularViewModel = [];
+    listFavoriteViewModel = [];
   }
 
   Future<void> _getNowPlayingMovie() async {
@@ -65,5 +72,19 @@ class HomeMovieController extends GetxController {
 
   void onTapMovieBanner(MovieViewModel itemNowPlayingMovie) {
     Get.toNamed(Routes.DETAILMOVIEPAGE, arguments: {"id_movie": itemNowPlayingMovie.idMovie});
+  }
+
+  Future<void> _getFavoriteUserMovie() async {
+    _gettingFavoriteMovie(true);
+    List<dynamic>? data = box.read("list_liked_movie_user");
+    if (data != null && data.isNotEmpty) {
+      listFavoriteViewModel = (data).map((item) => DetailMovieViewModel.fromJson(item)).toList();
+    }
+    _gettingFavoriteMovie(false);
+  }
+
+  void _gettingFavoriteMovie(bool value) {
+    loadingFavoriteMovie = value;
+    update(["builderFavoriteMovie"]);
   }
 }
