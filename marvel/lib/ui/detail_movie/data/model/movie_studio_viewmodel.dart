@@ -19,4 +19,8 @@ class MovieStudioViewmodel {
       studioCountry: json["origin_country"] ?? "",
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {"id": id, "name": studioNme, "logo_path": studioBackgroundImage, "origin_country": studioCountry};
+  }
 }

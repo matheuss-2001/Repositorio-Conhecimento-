@@ -88,16 +88,11 @@ class DetailMoviePage extends GetView<DetailMovieController> {
                 controller.detailMovieViewModel.movieTitle,
                 style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              RatingBar.builder(
-                ignoreGestures: true,
-                itemSize: 20,
-                initialRating: controller.detailMovieViewModel.movieRate,
-                minRating: 1,
-                allowHalfRating: true,
-                direction: Axis.horizontal,
-                itemCount: 10,
-                itemBuilder: (context, _) => const Icon(Icons.star, color: Colors.amber),
-                onRatingUpdate: (rating) {},
+              IconButton(
+                onPressed: () {
+                  controller.onTapLikeMovie();
+                },
+                icon: Icon(controller.likedMovie ? Icons.star : Icons.star_border, color: Colors.blue, size: 22),
               ),
             ],
           ),
@@ -152,6 +147,18 @@ class DetailMoviePage extends GetView<DetailMovieController> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const SizedBox(height: 8),
+            RatingBar.builder(
+              ignoreGestures: true,
+              itemSize: 20,
+              initialRating: controller.detailMovieViewModel.movieRate,
+              minRating: 1,
+              allowHalfRating: true,
+              direction: Axis.horizontal,
+              itemCount: 10,
+              itemBuilder: (context, _) => const Icon(Icons.star, color: Colors.amber),
+              onRatingUpdate: (rating) {},
+            ),
             const SizedBox(height: 8),
             _buildInfoRow(Icons.calendar_today, "Lançamento", controller.detailMovieViewModel.getReleaseDateFormated()),
             const SizedBox(height: 8),

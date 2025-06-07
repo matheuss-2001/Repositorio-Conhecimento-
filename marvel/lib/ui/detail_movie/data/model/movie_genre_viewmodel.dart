@@ -7,4 +7,8 @@ class MovieGenreViewmodel {
   factory MovieGenreViewmodel.fromJson(Map<String, dynamic> json) {
     return MovieGenreViewmodel(id: json["id"] ?? 0, genreDescription: json['name'] ?? "");
   }
+
+  Map<String, dynamic> toJson() {
+    return {"id": id, "name": genreDescription};
+  }
 }
