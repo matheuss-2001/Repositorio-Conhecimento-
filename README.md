@@ -5,11 +5,14 @@ MOVIE
 - Splash Com logo Movie TMDB (DONE)
 - Service  API buscar detalhe Movie (DONE)
 - Tela Detalhe Movie (DONE)
+- Like Unlike Movie save Local (DONE)
+- Refresh Home Page(DONE)
 
-  <img width="309" alt="Screenshot 2025-06-06 at 11 43 41" src="https://github.com/user-attachments/assets/84d41b03-b781-421c-94cc-39e57ae09b14" />
-  <img width="231" alt="Screenshot 2025-06-06 at 11 43 30" src="https://github.com/user-attachments/assets/9756f615-95b9-4ad4-a8de-b94bc0fbb252" />
-  <img width="309" alt="Screenshot 2025-06-06 at 17 41 58" src="https://github.com/user-attachments/assets/92336908-cccb-4cdc-9c59-90e975372f7c" />
-  <img width="310" alt="Screenshot 2025-06-06 at 17 42 06" src="https://github.com/user-attachments/assets/08438e7b-131d-4261-b24c-d0fbf3b8e61c" />
+<img width="309" alt="Screenshot 2025-06-06 at 11 43 41" src="https://github.com/user-attachments/assets/84d41b03-b781-421c-94cc-39e57ae09b14" />
+<img width="298" alt="Screenshot 2025-06-06 at 21 44 51" src="https://github.com/user-attachments/assets/62481642-c4c7-44d2-a3c0-60af6004b5b5" />
+<img width="271" alt="Screenshot 2025-06-06 at 21 45 04" src="https://github.com/user-attachments/assets/e1b356bc-7661-43d6-946f-dd3d977f3f2a" />
+<img width="261" alt="Screenshot 2025-06-06 at 21 50 06" src="https://github.com/user-attachments/assets/3f3c38ee-b128-41ff-8433-1d92ccbe210f" />
+
 
 
 
